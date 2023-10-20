@@ -95,6 +95,10 @@ public class Enemy : MonoBehaviour {
                         Main.S.ShipDestroyed(this);
                     }
                     notifiedOfDestruction = true;
+
+                    // Update UI
+                    UIManager.instance.UpdateEnemiesKilled(1);
+
                     // Destroy this enemy
                     Destroy(this.gameObject);
                 }
