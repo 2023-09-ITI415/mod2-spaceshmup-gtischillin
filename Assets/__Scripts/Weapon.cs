@@ -123,15 +123,29 @@ public class Weapon : MonoBehaviour {
                 break;
 
             case WeaponType.spread:
-                p = MakeProjectile(); // Make middle Projectile
-                p.rigid.velocity = vel;
-                p = MakeProjectile(); // Make right Projectile
-                p.transform.rotation = Quaternion.AngleAxis(10, Vector3.back);
-                p.rigid.velocity = p.transform.rotation * vel;
-                p = MakeProjectile(); // Make left Projectile
-                p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
-                p.rigid.velocity = p.transform.rotation * vel;
-                break;
+            // Make center Projectile
+            p = MakeProjectile();
+            p.rigid.velocity = vel;
+
+            // Make right Projectile
+            p = MakeProjectile();
+            p.transform.rotation = Quaternion.AngleAxis(10, Vector3.back);
+            p.rigid.velocity = p.transform.rotation * vel;
+
+            // Make left Projectile
+            p = MakeProjectile();
+            p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
+            p.rigid.velocity = p.transform.rotation * vel;
+
+            // Make two additional projectiles
+            p = MakeProjectile();
+            p.transform.rotation = Quaternion.AngleAxis(5, Vector3.back);
+            p.rigid.velocity = p.transform.rotation * vel;
+
+            p = MakeProjectile();
+            p.transform.rotation = Quaternion.AngleAxis(-5, Vector3.back);
+            p.rigid.velocity = p.transform.rotation * vel;
+            break;
         }
     }
 
